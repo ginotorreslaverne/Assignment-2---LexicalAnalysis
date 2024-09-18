@@ -1,0 +1,22 @@
+// -----------------------------------------------------------------------------------------------------------------------
+//                                               Name(s) Gino Torres, 
+//                                               Course CMPS 455, Fall 2024
+//                                               Assignment Assignment 2 - LexicalAnalyzer
+//                                               Due date September/19/2024
+// Purpose: 
+/* 
+I attached a simple computer language grammar to this assignment.
+
+Please complete the lexical analyzer of your compiler, just as I talked in classroom, you only need to define the pattern and corresponding actions. Please reference the sample in slide.
+*/
+//------------------------------------------------------------------------------------------------------------------------
+
+“//”.*                                                   /* Comment line - action: skip ; */
+“int”|”real”|”if”|”then”|”else”|”while”                  /* { return KEYWORD; } */
+[a-zA-Z][a-zA-Z0-9]{0,63}                                /* { yylval.sval = strdup(yytext); return IDENTIFIER; } */
+[=-/*=<>!]+                                              /* { return OPERATOR; } */
+[(){};]                                                  /* { return DELIMITER; } */
+[0-9]+                                     	             /* { yylval = atoi(yytext); return INT; } */
+[eE][+|-]?[0-9]+                                   	     /* { yyfval = atof(yytext); return REAL; } */
+\.[0-9]+                                   	             /* { yyfval = atof(yytext); return REAL; } */
+[0-9]+([eE][+|-]?[0-9]+).[0-9]+([eE][+|-]?[0-9]+|ε)      /* { yyfval = atof(yytext); return REAL; } */
