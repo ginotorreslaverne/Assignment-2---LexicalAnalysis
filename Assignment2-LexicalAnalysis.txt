@@ -14,26 +14,26 @@ Please complete the lexical analyzer of your compiler, just as I talked in class
 // Comments: skip
 "//".*                                                   /* { /* skip comment */ } */
 
-// Keywords: return KEYWORD
-"int"|"real"|"if"|"then"|"else"|"while"                  /* { return KEYWORD; } */
+// Keywords: print KEYWORD
+"int"|"real"|"if"|"then"|"else"|"while"                  /* { printf("KEYWORD: %s\n", yytext); } */
 
-// Identifiers: return IDENTIFIER with value
-[a-zA-Z][a-zA-Z0-9]{0,63}                                /* { yylval.sval = strdup(yytext); return IDENTIFIER; } */
+// Identifiers: print IDENTIFIER with value
+[a-zA-Z][a-zA-Z0-9]{0,63}                                /* { yylval.sval = strdup(yytext); printf("IDENTIFIER: %s\n", yylval.sval); } */
 
-// Operators: return OPERATOR
-(==|<=|>=|!=|=|<|>|!|\+|-|\*|\/)                         /* { return OPERATOR; } */
+// Operators: print OPERATOR
+(==|<=|>=|!=|=|<|>|!|\+|-|\*|\/)                         /* { printf("OPERATOR: %s\n", yytext); } */
 
-// Delimiters: return DELIMITER
-[(){};]                                                  /* { return DELIMITER; } */
+// Delimiters: print DELIMITER
+[(){};]                                                  /* { printf("DELIMITER: %s\n", yytext); } */
 
-// Integers: return INT with value
-[0-9]+                                                   /* { yylval.ival = atoi(yytext); return INT; } */
+// Integers: print INT with value
+[0-9]+                                                   /* { yylval.ival = atoi(yytext); printf("INT: %d\n", yylval.ival); } */
 
-// Real numbers with exponent: return REAL with value
-[0-9]+[eE][+-]?[0-9]+                                   /* { yylval.fval = atof(yytext); return REAL; } */
+// Real numbers with exponent: print REAL with value
+[0-9]+[eE][+-]?[0-9]+                                   /* { yylval.fval = atof(yytext); printf("REAL: %f\n", yylval.fval); } */
 
-// Decimal point real numbers: return REAL
-\.[0-9]+                                                 /* { yylval.fval = atof(yytext); return REAL; } */
+// Decimal point real numbers: print REAL
+\.[0-9]+                                                 /* { yylval.fval = atof(yytext); printf("REAL: %f\n", yylval.fval); } */
 
-// Full form real numbers: return REAL
-[0-9]+\.[0-9]+([eE][+-]?[0-9]+)?                        /* { yylval.fval = atof(yytext); return REAL; } */
+// Full form real numbers: print REAL
+[0-9]+\.[0-9]+([eE][+-]?[0-9]+)?                        /* { yylval.fval = atof(yytext); printf("REAL: %f\n", yylval.fval); } */
