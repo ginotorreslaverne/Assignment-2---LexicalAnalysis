@@ -2,7 +2,7 @@
 //                                               Name(s) Gino Torres, 
 //                                               Course CMPS 455, Fall 2024
 //                                               Assignment Assignment 2 - LexicalAnalyzer
-//                                               Due date September/19/2024
+//                                               Due date September/26/2024
 // Purpose: 
 /* 
 I attached a simple computer language grammar to this assignment.
